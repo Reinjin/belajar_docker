@@ -7,3 +7,4 @@ ls
 redis-cli
 set hello "halo kawan"
 get hello
+
