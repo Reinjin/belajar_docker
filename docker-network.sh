@@ -1,5 +1,8 @@
+# Menampilkan daftar semua network Docker yang ada
 docker network ls
 
- docker network create --driver bridge contohnetwork
+# Membuat network baru dengan nama 'contohnetwork' menggunakan driver bridge
+docker network create --driver bridge contohnetwork
 
- docker network rm contohnetwork
+# Menghapus network dengan nama 'contohnetwork'
+docker network rm contohnetwork
