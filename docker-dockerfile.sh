@@ -87,3 +87,22 @@ docker container start env
 # Display the logs of the 'env' container, showing the output of the Go application running inside
 docker container logs env   
 
+
+#Volume instruction
+# Build a Docker image named 'reinjin/volume' from the Dockerfile in the 'volume' directory
+docker build -t reinjin/volume volume   
+# Inspect the details of the 'reinjin/volume' image to verify the VOLUME instruction
+docker image inspect reinjin/volume
+# Create a new container named 'volume' from the 'reinjin/volume' image
+# Map port 8080 of the host to port 8080 of the container
+docker container create --name volume -p 8080:8080 reinjin/volume
+# Start the 'volume' container
+docker container start volume
+# Display the logs of the 'volume' container
+# This will show the output of the Go application running inside the container
+docker container logs volume
+# Inspect the details of the 'volume' container to verify the volume configuration
+docker container inspect volume
+# List all Docker volumes on the host system
+docker volume ls
+
