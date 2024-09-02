@@ -106,3 +106,27 @@ docker container inspect volume
 # List all Docker volumes on the host system
 docker volume ls
 
+#WORKDIR instruction
+# Build a Docker image named 'reinjin/workdir' from the Dockerfile in the 'workdir' directory
+docker build -t reinjin/workdir workdir 
+# Create a new container named 'workdir' from the 'reinjin/workdir' image
+# Map port 8080 of the host to port 8080 of the container
+docker container create --name workdir -p 8080:8080 reinjin/workdir
+# Start the 'workdir' container
+docker container start workdir  
+# Open an interactive terminal session inside the 'workdir' container
+docker container exec -i -t workdir /bin/sh
+
+#USER instruction
+docker build -t reinjin/user user
+docker container create --name user -p 8080:8080 reinjin/user
+docker container start user
+docker container exec -i -t user /bin/sh
+docker container stop user
+
+#Arguement instruction
+docker build -t reinjin/argument argument --build-arg app=fawwaz
+docker container create --name arg -p 8080:8080 reinjin/argument
+docker container start arg
+
+#HEALTHCHECK instruction
