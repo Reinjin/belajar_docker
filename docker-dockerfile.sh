@@ -118,15 +118,49 @@ docker container start workdir
 docker container exec -i -t workdir /bin/sh
 
 #USER instruction
+# Build a Docker image named 'reinjin/user' from the Dockerfile in the 'user' directory
 docker build -t reinjin/user user
+# Create a new container named 'user' from the 'reinjin/user' image, mapping port 8080
 docker container create --name user -p 8080:8080 reinjin/user
+# Start the 'user' container
 docker container start user
+# Open an interactive shell session inside the 'user' container
 docker container exec -i -t user /bin/sh
+# Stop the 'user' container
 docker container stop user
 
 #Arguement instruction
+# Build a Docker image named 'reinjin/argument' from the 'argument' directory, passing a build argument
 docker build -t reinjin/argument argument --build-arg app=fawwaz
+# Create a new container named 'arg' from the 'reinjin/argument' image, mapping port 8080
 docker container create --name arg -p 8080:8080 reinjin/argument
+# Start the 'arg' container
 docker container start arg
 
 #HEALTHCHECK instruction
+# Build a Docker image named 'reinjin/healthcheck' from the 'healthcheck' directory
+docker build -t reinjin/healthcheck healthcheck
+# Create a new container named 'healthcheck' from the 'reinjin/healthcheck' image, mapping port 8080
+docker container create --name healthcheck -p 8080:8080 reinjin/healthcheck
+# Start the 'healthcheck' container
+docker container start healthcheck
+# List all running containers
+docker container ls
+# Inspect the details of the 'healthcheck' container, including its health status
+docker container inspect healthcheck
+
+#Entry Point instruction
+# Build a Docker image named 'reinjin/entrypoint' from the 'entrypoint' directory
+docker build -t reinjin/entrypoint entrypoint
+# Create a new container named 'entrypoint' from the 'reinjin/entrypoint' image, mapping port 8080
+docker container create --name entrypoint -p 8080:8080 reinjin/entrypoint
+# Start the 'entrypoint' container
+docker container start entrypoint
+# Inspect the details of the 'reinjin/entrypoint' image, including its entrypoint configuration
+docker image inspect reinjin/entrypoint
+
+
+#multi stage build
+docker build -t reinjin/multistagebuild multistagebuild
+docker container create --name multistagebuild -p 8080:8080 reinjin/multistagebuild
+docker container start multistagebuild  
