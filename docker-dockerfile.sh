@@ -176,3 +176,6 @@ docker tag reinjin/multistagebuild registry.digitalocean.com/containerregistrype
 docker --config C:/Users/reinj/.docker-digital-ocean/ push registry.digitalocean.com/containerregistrypemula/multistagebuild
 
 docker --config C:/Users/reinj/.docker-digital-ocean/ pull registry.digitalocean.com/containerregistrypemula/multistagebuild
+
+docker build -t registry.digitalocean.com/containerregistrypemula/entrypoint entrypoint
+docker --config C:/Users/reinj/.docker-digital-ocean/ push registry.digitalocean.com/containerregistrypemula/entrypoint
