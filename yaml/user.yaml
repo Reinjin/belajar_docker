@@ -1,0 +1,17 @@
+firstname: Fawwaz
+middlName: Ijlal
+lastname: Muqsith
+hobbies:
+  - Reading
+  - Writing
+  - Coding
+  - Travelling
+address:
+  city: Kudus
+  country: Indonesia
+  postalCode: 59317
+wallet:
+  - type: cash
+    amount: 999
+  - type: credit
+    amount: 10000
