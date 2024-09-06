@@ -1,1 +1,26 @@
-version: "3.8"
+#save dulu jika mau run docker-compose
+
+services:
+
+  #ini adalah contoh service yang menggunakan image nginx:latest
+  nginx-example:
+    image: nginx:latest
+    container_name: nginx-example
+    #short syntax
+    ports:
+      - "8080:80"
+
+  nginx-example2:
+    image: nginx:latest
+    container_name: nginx-example2
+    #long syntax
+    ports:
+      - protocol: tcp
+        target: 80
+        published: 8081
+        mode: host
+
+  #ini adalah contoh service yang menggunakan image mongo:latest
+  mongo-example:
+    image: mongo:latest
+    container_name: mongo-example
