@@ -164,3 +164,15 @@ docker image inspect reinjin/entrypoint
 docker build -t reinjin/multistagebuild multistagebuild
 docker container create --name multistagebuild -p 8080:8080 reinjin/multistagebuild
 docker container start multistagebuild  
+
+#push ke docker hub
+docker login -u reinjin
+
+#push ke digital ocean registry
+#nama image harus di rename sesuai repository digital ocean
+#registry.digitalocean.com/containerregistrypemula/multistagebuild
+
+docker tag reinjin/multistagebuild registry.digitalocean.com/containerregistrypemula/multistagebuild
+docker --config C:/Users/reinj/.docker-digital-ocean/ push registry.digitalocean.com/containerregistrypemula/multistagebuild
+
+docker --config C:/Users/reinj/.docker-digital-ocean/ pull registry.digitalocean.com/containerregistrypemula/multistagebuild
