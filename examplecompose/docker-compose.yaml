@@ -1,5 +1,11 @@
 #save dulu jika mau run docker-compose
 
+volumes:
+  mongo-data:
+    name: mongo-data
+  mongo-data1:
+    name: mongo-data1
+
 services:
 
   #ini adalah contoh service yang menggunakan image nginx:latest
@@ -47,5 +53,34 @@ services:
     #long syntax
       - type: bind
         source: "./data-mongo1"
+        target: "/data/db"
+        read_only: false
+  
+  mongo-example2:
+    image: mongo:latest
+    container_name: mongo-example2
+    ports:
+      - "27021:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+    #shot syntax
+      - "mongo-data:/data/db"
+
+  mongo-example3:
+    image: mongo:latest
+    container_name: mongo-example3
+    ports:
+      - "27022:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+    #long syntax
+      - type: volume
+        source: "mongo-data1"
         target: "/data/db"
         read_only: false
