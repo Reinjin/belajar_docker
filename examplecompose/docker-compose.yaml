@@ -30,3 +30,22 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: admin
+    volumes:
+    #shot syntax
+      - "./data-mongo:/data/db"
+
+  mongo-example1:
+    image: mongo:latest
+    container_name: mongo-example1
+    ports:
+      - "27020:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+    #long syntax
+      - type: bind
+        source: "./data-mongo1"
+        target: "/data/db"
+        read_only: false
