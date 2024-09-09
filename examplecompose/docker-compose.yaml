@@ -6,8 +6,12 @@ volumes:
   mongo-data1:
     name: mongo-data1
 
-services:
+networks:
+  networks-example:
+    name: networks-example
+    driver: bridge
 
+services:
   #ini adalah contoh service yang menggunakan image nginx:latest
   nginx-example:
     image: nginx:latest
@@ -15,6 +19,8 @@ services:
     #short syntax
     ports:
       - "8080:80"
+    networks:
+      - networks-example
 
   nginx-example2:
     image: nginx:latest
@@ -39,6 +45,8 @@ services:
     volumes:
     #shot syntax
       - "./data-mongo:/data/db"
+    networks:
+      - networks-example
 
   mongo-example1:
     image: mongo:latest
@@ -84,3 +92,20 @@ services:
         source: "mongo-data1"
         target: "/data/db"
         read_only: false
+
+  mongo-express-example:
+    image: mongo-express:latest
+    container_name: mongo-express-example
+    restart: always
+    ports:
+      - "8082:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo-example #container name
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: root
+    networks:
+      - networks-example
+    depends_on:
+      - mongo-example #service name

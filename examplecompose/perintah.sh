@@ -9,3 +9,6 @@ docker compose stop
 docker compose down
 
 docker compose ls
+
+#untuk melihat kejadian yang terjadi pada container
+docker events --filter 'container=mongodb-express-example'
