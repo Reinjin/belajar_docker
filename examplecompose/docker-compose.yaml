@@ -21,6 +21,14 @@ services:
       - "8080:80"
     networks:
       - networks-example
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 100M
+        limits:
+          cpus: '1'
+          memory: 200M
 
   nginx-example2:
     image: nginx:latest
