@@ -167,6 +167,7 @@ docker container start multistagebuild
 
 #push ke docker hub
 docker login -u reinjin
+#pass : access token
 
 #push ke digital ocean registry
 #nama image harus di rename sesuai repository digital ocean
